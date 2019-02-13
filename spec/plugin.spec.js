@@ -20,8 +20,10 @@ describe('unified plugin', function() {
 
       pipeline.use(plugin, { version: '0.1.0' });
 
-      expect(pipeline.attachers.length).toBe(1, 'pipeline attachers should contain an element');
-      expect(pipeline.attachers[0][0]).toBe(plugin, 'the plugin should be a valid attacher');
+      expect(pipeline.attachers.length).withContext('pipeline attachers should contain an element')
+                                       .toBe(1);
+      expect(pipeline.attachers[0][0]).withContext('the plugin should be a valid attacher')
+                                      .toBe(plugin);
     });
 
     it('should throw if no argument is provided', function() {
@@ -40,7 +42,8 @@ describe('unified plugin', function() {
       const transformer = plugin({ version: '0.1.0' });
       
       expect(transformer).toEqual(jasmine.any(Function));
-      expect(transformer.length).toBeGreaterThanOrEqual(1, 'transformer function should have at least one argument for the tree');
+      expect(transformer.length).withContext('transformer function should have at least one argument for the tree')
+                                .toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -74,7 +77,8 @@ describe('unified plugin', function() {
       });
 
       it('should preserve the primary heading', function() {
-        expect(tree.children.length).toBeGreaterThan(1, 'the primary heading should be present');
+        expect(tree.children.length).withContext('the primary heading should be present')
+                                    .toBeGreaterThan(1);
 
         const heading = tree.children[0];
         expect(heading).toMatchNode({ type: 'heading', depth: 1 });
@@ -101,7 +105,8 @@ describe('unified plugin', function() {
 
       it('should put the bump version heading after the unreleased heading', function() {
         const children = tree.children;
-        expect(children.length).toBeGreaterThanOrEqual(3, 'the primary heading and both second-level headings should be present');
+        expect(children.length).withContext('the primary heading and both second-level headings should be present')
+                               .toBeGreaterThanOrEqual(3);
 
         const unreleased = tree.children[1];
         expect(unreleased).withContext('the unreleased heading should be the first second-level heading')
@@ -118,7 +123,8 @@ describe('unified plugin', function() {
 
       it('should put the bump version link definition after the unreleased link definition', function() {
         const children = tree.children;
-        expect(children.length).toBeGreaterThanOrEqual(5, 'all headings and both link definitions should be present');
+        expect(children.length).withContext('all headings and both link definitions should be present')
+                               .toBeGreaterThanOrEqual(5);
 
         const unreleased = tree.children[3];
         expect(unreleased).toMatchNode({ type: 'definition', identifier: 'unreleased', label: 'Unreleased' });
