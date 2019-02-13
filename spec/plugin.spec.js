@@ -7,6 +7,13 @@ const fixtures = require('./plugin.fixtures');
 describe('unified plugin', function() {
   const plugin = require('../plugin');
 
+  it('should update an mdast document tree for the bumped version', function() {
+    const transformer = plugin({ version: '0.1.0' });
+    const input = fixtures.input();
+    transformer(input);
+    expect(input).toEqualNode(fixtures.output());
+  });
+
   describe('attacher', function() {
     it('should attach to a pipeline', function() {
       const pipeline = unified();
