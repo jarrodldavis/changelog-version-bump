@@ -1,9 +1,9 @@
-const util = require('util');
-
 const VFile = require('vfile');
 
+const { fmtInline } = require('./format.helpers');
+
 VFile.prototype.jasmineToString = function() {
-  return `VFile({ path: ${util.inspect(this.path)}, contents: ${util.inspect(this.contents)} })`;
+  return `VFile({ path: ${fmtInline(this.path)}, contents: ${fmtInline(this.contents)} })`;
 }
 
 beforeAll(function() {
@@ -24,7 +24,7 @@ beforeAll(function() {
           return jasmine.matchersUtil.equals(actual.path, expected, customTesters);
         },
         jasmineToString() {
-          return `<vfile.withCurrentPath ${util.inspect(expected)}>`;
+          return `<vfile.withCurrentPath ${fmtInline(expected)}>`;
         }
       }
     },
@@ -34,7 +34,7 @@ beforeAll(function() {
           return jasmine.matchersUtil.contains(actual.history, expected, customTesters);
         },
         jasmineToString() {
-          return `<vfile.withHistoricalPath ${util.inspect(expected)}>`;
+          return `<vfile.withHistoricalPath ${fmtInline(expected)}>`;
         }
       }
     }

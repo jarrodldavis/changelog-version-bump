@@ -112,7 +112,7 @@ describe('unified plugin', function() {
         const bumped = tree.children[2];
         expect(bumped).withContext('the bump version heading should be the second second-level heading')
                       .toMatchNode({ type: 'heading', depth: 2 });
-        expect(bumped).withContext('the bump heading should be the second second-level heading')
+        expect(bumped).withContext('the bump version heading should be the second second-level heading')
                       .toContainNode({ type: 'linkReference', identifier: '0.1.0', label: '0.1.0' })
       });
 

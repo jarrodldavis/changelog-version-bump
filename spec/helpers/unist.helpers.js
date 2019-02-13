@@ -1,11 +1,8 @@
-const { EOL } = require('os');
-const util = require('util');
-
 const assert = require('mdast-util-assert');
 const diff = require('unist-diff');
-const indent = require('indent-string');
-const inspect = require('unist-util-inspect').noColor;
 const is = require('unist-util-is');
+
+const { fmtInline, fmtBlock } = require('./format.helpers');
 
 beforeAll(function() {
   jasmine.unist = {
@@ -25,7 +22,7 @@ beforeAll(function() {
           return is(test, actual);
         },
         jasmineToString() {
-          return `<unist.nodeMatching ${util.inspect(test)}>`
+          return `<unist.nodeMatching ${fmtInline(test)}>`
         }
       }
     }
@@ -38,7 +35,7 @@ beforeEach(function() {
       return {
         compare(actual, expected) {
           const pass = is(expected, actual);
-          const message = `Expected test ${util.inspect(expected)} to ${pass ? 'fail' : 'succeed'} for node:${EOL}${inspect.noColor(actual)}.`;
+          const message = `Expected test ${fmtInline(expected)} to ${pass ? 'fail' : 'succeed'} for node: ${fmtBlock(actual)}`;
           return { pass, message };
         }
       }
@@ -57,13 +54,11 @@ beforeEach(function() {
           const match = find(actual);
           const pass = match !== undefined;
 
-          const formattedActual = indent(`${EOL}${inspect(actual)}${EOL}`, 2);
           let message;
           if (pass) {
-            const formattedMatch = indent(`${EOL}${inspect(match)}`, 2)
-            message = `Expected test ${util.inspect(expected)} to fail for a descendent of node:${formattedActual}but found:${formattedMatch}`;
+            message = `Expected test ${fmtInline(expected)} to fail for all descendents of node: ${fmtBlock(actual)} but found: ${fmtBlock(match)}`;
           } else {
-            message = `Expected test ${util.inspect(expected)} to succeed for a descendent of node:${formattedActual}`;
+            message = `Expected test ${fmtInline(expected)} to succeed for a descendent of node: ${fmtBlock(actual)}`;
           }
 
           return { pass, message };
@@ -85,14 +80,10 @@ beforeEach(function() {
           const pass = Object.keys(result).length === 0;
 
           let message;
-          const formattedActual = `${EOL}${indent(inspect(actual), 2)}${EOL}`;
-          const formattedExpected = `${EOL}${indent(inspect(expected), 2)}${EOL}`;
-
           if (pass) {
-            message = `Expected node:${formattedActual}to not match node:${formattedExpected}${EOL}but no diff was found`;
+            message = `Expected node: ${fmtBlock(actual)} to not match node: ${fmtBlock(expected)} but no diff was found`;
           } else {
-            const formattedDiff = `${EOL}${indent(util.inspect(result, { depth: null }), 2)}`;
-            message = `Expected node:${formattedActual}to match node:${formattedExpected}but found diff:${formattedDiff}`;
+            message = `Expected node: ${fmtBlock(actual)} to match node: ${fmtBlock(expected)} but found diff: ${fmtBlock(result)}`;
           }
 
           return { pass, message };
