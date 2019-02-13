@@ -60,9 +60,9 @@ function attacher({ version }) {
     const comparison = parts.pop();
     const [old, head] = comparison.split(URL_RANGE_SEPARATOR);
 
-    const prefixedversion = `${URL_VERSION_PREFIX}${version}`
+    const prefixedVersion = `${URL_VERSION_PREFIX}${version}`
     const unreleasedComparison = `${prefixedVersion}${URL_RANGE_SEPARATOR}${head}`;
-    const bumpedComparison = `${old}${URL_RANGE_SEPARATOR}${prefixedversion}`;
+    const bumpedComparison = `${old}${URL_RANGE_SEPARATOR}${prefixedVersion}`;
 
     unreleased.url = [...parts, unreleasedComparison].join(URL_PATH_SEPARATOR);
     bumped.url = [...parts, bumpedComparison].join(URL_PATH_SEPARATOR);
