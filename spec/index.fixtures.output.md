@@ -6,7 +6,7 @@
 
 ### Added
 
-- TODO
+-   TODO
 
 [Unreleased]: https://github.com/jarrodldavis/changelog-version-bump/compare/v0.1.0...HEAD
 

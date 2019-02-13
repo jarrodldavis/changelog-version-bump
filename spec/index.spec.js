@@ -3,6 +3,9 @@ const path = require('path');
 
 const mock = require('mock-require');
 
+const unified = require('unified');
+const parse = require('remark-parse');
+
 const INPUT_PATH = path.resolve(__dirname, './index.fixtures.input.md');
 const OUTPUT_PATH = path.resolve(__dirname, './index.fixtures.output.md');
 const ACTUAL_PATH = path.resolve(__dirname, './index.actual.md');
@@ -41,5 +44,23 @@ describe('entrypoint', function() {
       jasmine.unist.nodeMatching({ type: 'root' }),
       jasmine.vfile.withHistoricalPath(INPUT_PATH)
      );
+  });
+
+  it('updates the the changelog with changes made by the unified plugin', function() {
+    const transformerSpy =
+      jasmine.createSpy('unified plugin transformer')
+             .and.callFake(function(tree) {
+               const parser = unified().use(parse);
+               const outputTree = parser.parse(fs.readFileSync(OUTPUT_PATH));
+               Object.assign(tree, outputTree);
+             });
+
+    attacherSpy.and.returnValue(transformerSpy);
+
+    entrypoint(INPUT_PATH, ACTUAL_PATH, '0.1.0');
+
+    const actual = fs.readFileSync(ACTUAL_PATH).toString();
+    const expected = fs.readFileSync(OUTPUT_PATH).toString();
+    expect(actual).toEqual(expected);
   });
 });
