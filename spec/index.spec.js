@@ -2,10 +2,10 @@ const { AssertionError } = require('assert');
 
 const unified = require('unified');
 
-const fixtures = require('./plugin.fixtures');
+const fixtures = require('./index.fixtures');
 
 describe('unified plugin', function() {
-  const plugin = require('../plugin');
+  const plugin = require('..');
 
   it('should update an mdast document tree for the bumped version', function() {
     const transformer = plugin({ version: '0.1.0' });
