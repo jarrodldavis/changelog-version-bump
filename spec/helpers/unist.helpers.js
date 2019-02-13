@@ -5,6 +5,31 @@ const indent = require('indent-string');
 const inspect = require('unist-util-inspect').noColor;
 const is = require('unist-util-is');
 
+beforeAll(function() {
+  jasmine.unist = {
+    anyNode() {
+      return {
+        asymmetricMatch(actual) {
+          return is(null, actual);
+        },
+        jasmineToString() {
+          return '<unist.anyNode>'
+        }
+      }
+    },
+    nodeMatching(test) {
+      return {
+        asymmetricMatch(actual) {
+          return is(test, actual);
+        },
+        jasmineToString() {
+          return `<unist.nodeMatching ${util.inspect(test)}>`
+        }
+      }
+    }
+  };
+});
+
 beforeEach(function() {
   jasmine.addMatchers({
     toMatchNode() {
@@ -43,5 +68,5 @@ beforeEach(function() {
         }
       }
     }
-  })
-})
+  });
+});
