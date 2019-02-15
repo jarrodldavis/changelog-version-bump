@@ -4,7 +4,10 @@
   "description": "A remark plugin to handle version bumps for changelogs adhering to Keep a Changelog",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "preversion": "./version-scripts/run-preversion",
+    "version": "./version-scripts/run-version",
+    "postversion": "./version-scripts/run-postversion"
   },
   "repository": {
     "type": "git",
