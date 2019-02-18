@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Travis CI configuration ([#1])
 -   Initial remark plugin implementation ([#2])
 -   This changelog ([#3]), ([#6])
--   Release management configuration ([#4]), ([#5])
+-   Release management configuration ([#4]), ([#5]), ([#7])
 
 [#1]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/1
 
@@ -25,5 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#5]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/5
 
 [#6]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/6
+
+[#7]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/7
 
 [Unreleased]: https://github.com/jarrodldavis/remark-changelog-version-bump/compare/v0.0.1...HEAD
