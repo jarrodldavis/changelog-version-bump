@@ -7,7 +7,8 @@
     "test": "jasmine",
     "preversion": "./version-scripts/run-preversion",
     "version": "./version-scripts/run-version",
-    "postversion": "./version-scripts/run-postversion"
+    "postversion": "./version-scripts/run-postversion",
+    "mergeversion": "./version-scripts/run-mergeversion"
   },
   "repository": {
     "type": "git",
