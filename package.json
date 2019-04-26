@@ -4,7 +4,11 @@
   "description": "A remark plugin to handle version bumps for changelogs adhering to Keep a Changelog",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "preversion": "run-preversion",
+    "version": "run-version",
+    "postversion": "run-postversion",
+    "mergeversion": "run-mergeversion"
   },
   "repository": {
     "type": "git",
@@ -34,6 +38,7 @@
     "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
+    "@jarrodldavis/version-scripts": "^0.1.0",
     "indent-string": "^4.0.0",
     "jasmine": "^3.4.0",
     "unified": "^7.1.0",
