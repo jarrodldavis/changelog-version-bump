@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1]
+
+### Changed
+
+-   Update development dependencies ([#10]), ([#13])
+-   Self-reference using `npm link` ([#11])
+
 ## [0.1.0]
 
 ### Added
@@ -30,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#7]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/7
 
-[Unreleased]: https://github.com/jarrodldavis/remark-changelog-version-bump/compare/v0.1.0...HEAD
+[#10]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/10
+
+[#11]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/11
+
+[#13]: https://github.com/jarrodldavis/remark-changelog-version-bump/pull/13
+
+[Unreleased]: https://github.com/jarrodldavis/remark-changelog-version-bump/compare/v0.1.1...HEAD
+
+[0.1.1]: https://github.com/jarrodldavis/remark-changelog-version-bump/compare/v0.1.0...v0.1.1
 
 [0.1.0]: https://github.com/jarrodldavis/remark-changelog-version-bump/compare/v0.0.1...v0.1.0
