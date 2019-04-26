@@ -4,6 +4,7 @@
   "description": "A remark plugin to handle version bumps for changelogs adhering to Keep a Changelog",
   "main": "index.js",
   "scripts": {
+    "prepare": "npm link --ignore-scripts && npm link $npm_package_name",
     "test": "jasmine",
     "preversion": "./version-scripts/run-preversion",
     "version": "./version-scripts/run-version",
