@@ -1,3 +1,0 @@
-[submodule "version-scripts"]
-	path = version-scripts
-	url = git://github.com/jarrodldavis/npm-version-scripts.git
