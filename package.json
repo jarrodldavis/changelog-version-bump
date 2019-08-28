@@ -33,7 +33,7 @@
   "homepage": "https://github.com/jarrodldavis/remark-changelog-version-bump#readme",
   "dependencies": {
     "mdast-util-assert": "^2.0.0",
-    "unist-util-is": "^2.1.2",
+    "unist-util-is": "^4.0.0",
     "unist-util-map": "^1.0.4",
     "unist-util-visit": "^2.0.0"
   },
