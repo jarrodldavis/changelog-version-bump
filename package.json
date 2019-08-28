@@ -35,7 +35,7 @@
     "mdast-util-assert": "^2.0.0",
     "unist-util-is": "^2.1.2",
     "unist-util-map": "^1.0.4",
-    "unist-util-visit": "^1.4.0"
+    "unist-util-visit": "^2.0.0"
   },
   "devDependencies": {
     "@jarrodldavis/version-scripts": "^0.1.0",
